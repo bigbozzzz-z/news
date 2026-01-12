@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b1220" />
+
+  <title>BigBozz News — Berita, Tren, & Update Harian</title>
+  <meta name="description" content="BigBozz News menyajikan berita, tren, dan update harian dengan tampilan cepat, rapi, dan ramah SEO. Jelajahi headline, kategori, dan artikel pilihan." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://example.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="BigBozz News" />
+  <meta property="og:title" content="BigBozz News — Berita, Tren, & Update Harian" />
+  <meta property="og:description" content="Headline, kategori, dan artikel pilihan dengan tampilan cepat dan rapi." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://example.com/" />
+  <meta property="og:image" content="https://example.com/og-image.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="BigBozz News — Berita, Tren, & Update Harian" />
+  <meta name="twitter:description" content="Headline, kategori, dan artikel pilihan dengan tampilan cepat dan rapi." />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsMediaOrganization",
+    "name": "BigBozz News",
+    "url": "https://example.com/",
+    "logo": "https://example.com/logo.png",
+    "sameAs": []
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#101a2e;
+      --card2:#0f1730;
+      --text:#e7eefc;
+      --muted:#a7b3cc;
+      --line:rgba(255,255,255,.10);
+      --brand:#4fd1c5;
+      --brand2:#60a5fa;
+      --shadow:0 18px 40px rgba(0,0,0,.35);
+      --radius:18px;
+      --max:1120px;
+    }
+    [data-theme="light"]{
+      --bg:#f5f7fb;
+      --card:#ffffff;
+      --card2:#ffffff;
+      --text:#0b1220;
+      --muted:#54627a;
+      --line:rgba(10,20,40,.10);
+      --shadow:0 14px 30px rgba(0,0,0,.10);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 700px at 10% -10%, rgba(79,209,197,.18), transparent 55%),
+                  radial-gradient(1200px 700px at 90% -10%, rgba(96,165,250,.16), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .wrap{max-width:var(--max); margin:0 auto; padding:22px}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(140%) blur(10px);
+      background: color-mix(in srgb, var(--bg) 72%, transparent);
+      border-bottom:1px solid var(--line);
+    }
+    .topbar .wrap{display:flex; align-items:center; gap:14px; padding:14px 22px}
+    .logo{
+      display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.3px;
+    }
+    .mark{
+      width:38px; height:38px; border-radius:12px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: var(--shadow);
+      position:relative;
+    }
+    .mark:after{
+      content:""; position:absolute; inset:9px;
+      border-radius:10px;
+      background: rgba(0,0,0,.20);
+      border:1px solid rgba(255,255,255,.25);
+    }
+    .logo span{font-size:15px}
+    .nav{
+      display:flex; gap:10px; flex-wrap:wrap; margin-left:auto;
+    }
+    .pill{
+      padding:9px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      font-size:13px;
+      color:var(--muted);
+      background: color-mix(in srgb, var(--card) 68%, transparent);
+      transition:.15s ease;
+    }
+    .pill:hover{transform:translateY(-1px); color:var(--text)}
+    .actions{display:flex; gap:10px; align-items:center}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background: color-mix(in srgb, var(--card) 78%, transparent);
+      color:var(--text);
+      font-size:13px;
+      cursor:pointer;
+      transition:.15s ease;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn.primary{
+      border-color: color-mix(in srgb, var(--brand) 55%, var(--line));
+      background: linear-gradient(135deg, color-mix(in srgb, var(--brand) 35%, var(--card)), color-mix(in srgb, var(--brand2) 30%, var(--card)));
+    }
+    .hero{
+      padding:28px 0 10px;
+    }
+    .heroGrid{
+      display:grid; grid-template-columns: 1.35fr .65fr; gap:16px;
+    }
+    @media (max-width: 920px){
+      .heroGrid{grid-template-columns:1fr}
+      .nav{display:none}
+    }
+    .card{
+      background: color-mix(in srgb, var(--card) 92%, transparent);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .card .pad{padding:18px}
+    .headline{
+      min-height:330px;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      background:
+        linear-gradient(180deg, transparent 25%, rgba(0,0,0,.55) 100%),
+        radial-gradient(900px 400px at 20% 20%, rgba(79,209,197,.18), transparent 60%),
+        radial-gradient(900px 400px at 80% 10%, rgba(96,165,250,.16), transparent 60%),
+        color-mix(in srgb, var(--card2) 94%, transparent);
+    }
+    [data-theme="light"] .headline{
+      background:
+        linear-gradient(180deg, transparent 25%, rgba(0,0,0,.45) 100%),
+        radial-gradient(900px 400px at 20% 20%, rgba(79,209,197,.22), transparent 60%),
+        radial-gradient(900px 400px at 80% 10%, rgba(96,165,250,.18), transparent 60%),
+        #15203b;
+    }
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      font-size:12px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.22);
+      color:#fff;
+    }
+    .hTitle{
+      font-size:28px;
+      margin:10px 0 8px;
+      line-height:1.15;
+    }
+    .meta{
+      display:flex; gap:12px; flex-wrap:wrap;
+      color:rgba(255,255,255,.80);
+      font-size:12px;
+    }
+    .meta span{opacity:.95}
+    .summary{
+      margin:12px 0 0;
+      color:rgba(255,255,255,.88);
+      max-width:62ch;
+      font-size:14px;
+    }
+    .miniList{display:flex; flex-direction:column; gap:12px}
+    .miniItem{
+      display:flex; gap:12px;
+      padding:14px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background: color-mix(in srgb, var(--card) 85%, transparent);
+      transition:.15s ease;
+    }
+    .miniItem:hover{transform:translateY(-1px)}
+    .thumb{
+      width:74px; height:74px; border-radius:14px;
+      background: linear-gradient(135deg, rgba(79,209,197,.25), rgba(96,165,250,.22));
+      border:1px solid var(--line);
+      flex:0 0 auto;
+    }
+    .miniItem h3{
+      margin:0;
+      font-size:14px;
+      line-height:1.25;
+    }
+    .miniItem p{
+      margin:6px 0 0;
+      font-size:12px;
+      color:var(--muted);
+    }
+    .grid{
+      display:grid; grid-template-columns: 1fr 1fr 1fr;
+      gap:16px;
+      margin:18px 0 0;
+    }
+    @media (max-width: 980px){
+      .grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 640px){
+      .grid{grid-template-columns:1fr}
+      .topbar .wrap{padding:12px 16px}
+      .wrap{padding:16px}
+    }
+    .post h3{margin:0 0 8px; font-size:16px; line-height:1.25}
+    .post .excerpt{margin:0; color:var(--muted); font-size:13px}
+    .post .badgeRow{display:flex; gap:8px; flex-wrap:wrap; margin:0 0 10px}
+    .badge{
+      font-size:11px;
+      padding:6px 9px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      color:var(--muted);
+      background: color-mix(in srgb, var(--card) 85%, transparent);
+    }
+    .sectionTitle{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
+      margin:18px 0 10px;
+    }
+    .sectionTitle h2{margin:0; font-size:18px}
+    .sectionTitle small{color:var(--muted)}
+    .footer{
+      margin:26px 0 10px;
+      padding:18px 0 6px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .footerGrid{
+      display:grid; grid-template-columns: 1fr 1fr; gap:16px;
+    }
+    @media (max-width: 720px){ .footerGrid{grid-template-columns:1fr} }
+    .input{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: color-mix(in srgb, var(--card) 82%, transparent);
+      color:var(--text);
+      outline:none;
+      font-size:13px;
+    }
+    .kbd{
+      font-size:11px;
+      padding:3px 6px;
+      border-radius:8px;
+      border:1px solid var(--line);
+      color:var(--muted);
+      background: color-mix(in srgb, var(--card) 85%, transparent);
+    }
+    .sr-only{
+      position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+      overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+    }
+  </style>
+</head>
+
+<body data-theme="dark">
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="wrap">
+      <a class="logo" href="#" aria-label="BigBozz News">
+        <div class="mark" aria-hidden="true"></div>
+        <span>BigBozz <span style="opacity:.85;font-weight:700">News</span></span>
+      </a>
+
+      <nav class="nav" aria-label="Navigasi">
+        <a class="pill" href="#headline">Headline</a>
+        <a class="pill" href="#trending">Trending</a>
+        <a class="pill" href="#kategori">Kategori</a>
+        <a class="pill" href="#pilihan">Pilihan Editor</a>
+        <a class="pill" href="#tentang">Tentang</a>
+      </nav>
+
+      <div class="actions">
+        <button class="btn" id="themeBtn" type="button" aria-label="Ganti tema">
+          🌓 <span class="hide-sm">Tema</span>
+        </button>
+        <a class="btn primary" href="#subscribe">🔔 Subscribe</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Hero -->
+    <section class="hero" id="headline">
+      <div class="heroGrid">
+        <!-- Big headline -->
+        <article class="card headline" aria-label="Headline utama">
+          <div class="pad">
+            <span class="tag">🔥 Headline Hari Ini</span>
+            <h1 class="hTitle">Rangkuman Update BigBozz: Tren, Sorotan, dan Insight Paling Ramai Dibahas</h1>
+            <div class="meta">
+              <span>🗓️ <time id="todayDate" datetime=""></time></span>
+              <span>✍️ Tim Redaksi</span>
+              <span>⏱️ 3 menit baca</span>
+            </div>
+            <p class="summary">
+              Selamat datang di BigBozz News. Halaman ini adalah template index yang bisa kamu isi dengan artikel,
+              kategori, dan berita pilihan. Ganti judul, deskripsi, serta link artikel sesuai kebutuhan.
+            </p>
+            <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+              <a class="btn primary" href="#trending">Buka Trending</a>
+              <a class="btn" href="#pilihan">Lihat Pilihan Editor</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Side list -->
+        <aside class="miniList" aria-label="Update cepat">
+          <div class="card">
+            <div class="pad">
+              <label class="sr-only" for="searchInput">Cari berita</label>
+              <input id="searchInput" class="input" type="search" placeholder="Cari berita… (contoh: “update”, “tren”)  "
+                     autocomplete="off" />
+              <div style="margin-top:10px; display:flex; align-items:center; justify-content:space-between; gap:12px;">
+                <small style="color:var(--muted)">Tips: tekan <span class="kbd">Ctrl</span> + <span class="kbd">K</span></small>
+                <small id="resultCount" style="color:var(--muted)"></small>
+              </div>
+            </div>
+          </div>
+
+          <a class="miniItem" href="#pilihan" data-title="Update cepat: ringkasan berita pagi">
+            <div class="thumb" aria-hidden="true"></div>
+            <div>
+              <h3>Update Cepat: Ringkasan Berita Pagi</h3>
+              <p>Ringkas, padat, dan langsung ke poin penting.</p>
+            </div>
+          </a>
+
+          <a class="miniItem" href="#kategori" data-title="Sorotan: topik yang lagi naik">
+            <div class="thumb" aria-hidden="true"></div>
+            <div>
+              <h3>Sorotan: Topik yang Lagi Naik</h3>
+              <p>Kumpulan isu & pembahasan yang sedang ramai.</p>
+            </div>
+          </a>
+
+          <a class="miniItem" href="#trending" data-title="Trending: artikel paling banyak dibaca">
+            <div class="thumb" aria-hidden="true"></div>
+            <div>
+              <h3>Trending: Artikel Paling Banyak Dibaca</h3>
+              <p>Top 5 artikel dengan engagement tertinggi.</p>
+            </div>
+          </a>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Trending -->
+    <section id="trending">
+      <div class="sectionTitle">
+        <h2>🔥 Trending</h2>
+        <small>Update: <span id="updatedAt"></span></small>
+      </div>
+
+      <div class="grid" id="postGrid">
+        <!-- Post 1 -->
+        <article class="card post" data-title="Tren Hari Ini: apa yang sedang ramai?" data-category="Trending">
+          <div class="pad">
+            <div class="badgeRow">
+              <span class="badge">Trending</span><span class="badge">Update</span>
+            </div>
+            <h3><a href="artikel-1.html">Tren Hari Ini: Apa yang Sedang Ramai?</a></h3>
+            <p class="excerpt">Gambaran cepat topik hangat yang banyak dibahas. Ganti dengan ringkasan artikelmu sendiri.</p>
+            <div style="margin-top:12px; color:var(--muted); font-size:12px;">
+              <span>⏱️ 2 menit</span> · <span>🗓️ <time>Hari ini</time></span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="card post" data-title="Analisis: mengapa sebuah isu bisa viral?" data-category="Analisis">
+          <div class="pad">
+            <div class="badgeRow">
+              <span class="badge">Analisis</span><span class="badge">Insight</span>
+            </div>
+            <h3><a href="artikel-2.html">Analisis: Mengapa Sebuah Isu Bisa Viral?</a></h3>
+            <p class="excerpt">Kerangka sederhana untuk membaca pola viral dan sumber percakapan di internet.</p>
+            <div style="margin-top:12px; color:var(--muted); font-size:12px;">
+              <span>⏱️ 4 menit</span> · <span>🗓️ <time>Minggu ini</time></span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 3 -->
+        <article class="card post" data-title="Panduan: cara cek fakta sebelum share" data-category="Panduan">
+          <div class="pad">
+            <div class="badgeRow">
+              <span class="badge">Panduan</span><span class="badge">Literasi</span>
+            </div>
+            <h3><a href="artikel-3.html">Panduan: Cara Cek Fakta Sebelum Share</a></h3>
+            <p class="excerpt">Checklist ringkas untuk memastikan informasi yang kamu bagikan lebih akurat dan aman.</p>
+            <div style="margin-top:12px; color:var(--muted); font-size:12px;">
+              <span>⏱️ 5 menit</span> · <span>🗓️ <time>Minggu ini</time></span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Kategori -->
+    <section id="kategori">
+      <div class="sectionTitle">
+        <h2>📚 Kategori</h2>
+        <small>Pilih topik sesuai minat</small>
+      </div>
+
+      <div class="grid">
+        <a class="card" href="kategori-trending.html">
+          <div class="pad">
+            <h3 style="margin:0 0 6px;">Trending</h3>
+            <p class="excerpt">Topik paling hangat & cepat berubah.</p>
+          </div>
+        </a>
+        <a class="card" href="kategori-analisis.html">
+          <div class="pad">
+            <h3 style="margin:0 0 6px;">Analisis</h3>
+            <p class="excerpt">Ulasan lebih dalam, data, dan konteks.</p>
+          </div>
+        </a>
+        <a class="card" href="kategori-panduan.html">
+          <div class="pad">
+            <h3 style="margin:0 0 6px;">Panduan</h3>
+            <p class="excerpt">Tips praktis, langkah demi langkah.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Pilihan Editor -->
+    <section id="pilihan">
+      <div class="sectionTitle">
+        <h2>⭐ Pilihan Editor</h2>
+        <small>Artikel yang layak kamu baca</small>
+      </div>
+
+      <div class="grid">
+        <article class="card post" data-title="Ringkasan mingguan: highlight besar" data-category="Pilihan Editor">
+          <div class="pad">
+            <div class="badgeRow">
+              <span class="badge">Pilihan Editor</span><span class="badge">Ringkasan</span>
+            </div>
+            <h3><a href="pilihan-1.html">Ringkasan Mingguan: Highlight Besar</a></h3>
+            <p class="excerpt">Satu halaman untuk menangkap inti berita sepekan tanpa ketinggalan poin penting.</p>
+            <div style="margin-top:12px; color:var(--muted); font-size:12px;">
+              <span>⏱️ 6 menit</span> · <span>🗓️ <time>Bulan ini</time></span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card post" data-title="Opini: membaca tren tanpa ikut panik" data-category="Opini">
+          <div class="pad">
+            <div class="badgeRow">
+              <span class="badge">Opini</span><span class="badge">Mindset</span>
+            </div>
+            <h3><a href="pilihan-2.html">Opini: Membaca Tren Tanpa Ikut Panik</a></h3>
+            <p class="excerpt">Cara menjaga sudut pandang tetap jernih saat linimasa sedang ramai.</p>
+            <div style="margin-top:12px; color:var(--muted); font-size:12px;">
+              <span>⏱️ 4 menit</span> · <span>🗓️ <time>Bulan ini</time></span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card post" data-title="Checklist: membuat halaman berita yang rapi" data-category="Teknis">
+          <div class="pad">
+            <div class="badgeRow">
+              <span class="badge">Teknis</span><span class="badge">Template</span>
+            </div>
+            <h3><a href="pilihan-3.html">Checklist: Membuat Halaman Berita yang Rapi</a></h3>
+            <p class="excerpt">Struktur heading, meta, dan komponen UI yang bikin pembaca betah.</p>
+            <div style="margin-top:12px; color:var(--muted); font-size:12px;">
+              <span>⏱️ 5 menit</span> · <span>🗓️ <time>Bulan ini</time></span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Subscribe + About -->
+    <section id="subscribe" class="card" style="margin-top:18px;">
+      <div class="pad">
+        <div class="sectionTitle" style="margin:0 0 8px;">
+          <h2>🔔 Subscribe</h2>
+          <small>Dapatkan update pilihan</small>
+        </div>
+        <p class="excerpt" style="margin:0 0 12px;">
+          Ini contoh form sederhana (tanpa backend). Jika mau, nanti bisa saya sambungkan ke WhatsApp, Telegram, atau email newsletter.
+        </p>
+        <form onsubmit="event.preventDefault(); alert('Terima kasih! (Demo)');" style="display:flex; gap:10px; flex-wrap:wrap;">
+          <label class="sr-only" for="email">Email</label>
+          <input id="email" class="input" type="email" placeholder="emailkamu@domain.com" required style="flex:1; min-width:220px;">
+          <button class="btn primary" type="submit">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="tentang" class="footer">
+      <div class="footerGrid">
+        <div>
+          <strong style="color:var(--text)">BigBozz News</strong>
+          <p style="margin:10px 0 0;">
+            Template index.html siap pakai untuk portal berita. Kamu bisa mengganti link artikel, kategori,
+            menambah halaman detail (artikel-1.html, dll), dan mengintegrasikan CMS kapan saja.
+          </p>
+        </div>
+        <div>
+          <strong style="color:var(--text)">Kontak</strong>
+          <p style="margin:10px 0 0;">
+            Email: <a href="mailto:admin@bigbozznews.com" style="text-decoration:underline; text-underline-offset:3px;">admin@bigbozznews.com</a><br>
+            Instagram: <a href="#" style="text-decoration:underline; text-underline-offset:3px;">@bigbozznews</a>
+          </p>
+          <p style="margin:10px 0 0; font-size:12px;">
+            © <span id="yearNow"></span> BigBozz News. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Date helpers
+    const now = new Date();
+    const fmt = new Intl.DateTimeFormat('id-ID', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+    const fmtTime = new Intl.DateTimeFormat('id-ID', { hour:'2-digit', minute:'2-digit' });
+
+    const todayEl = document.getElementById('todayDate');
+    todayEl.textContent = fmt.format(now);
+    todayEl.setAttribute('datetime', now.toISOString());
+
+    document.getElementById('updatedAt').textContent = fmtTime.format(now);
+    document.getElementById('yearNow').textContent = now.getFullYear();
+
+    // Theme toggle (saved in localStorage)
+    const body = document.body;
+    const themeBtn = document.getElementById('themeBtn');
+    const savedTheme = localStorage.getItem('bbn_theme');
+    if (savedTheme) body.setAttribute('data-theme', savedTheme);
+
+    themeBtn.addEventListener('click', () => {
+      const current = body.getAttribute('data-theme') || 'dark';
+      const next = current === 'dark' ? 'light' : 'dark';
+      body.setAttribute('data-theme', next);
+      localStorage.setItem('bbn_theme', next);
+    });
+
+    // Ctrl+K focus search
+    const searchInput = document.getElementById('searchInput');
+    window.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        searchInput.focus();
+      }
+    });
+
+    // Simple filter posts by title
+    const posts = Array.from(document.querySelectorAll('#postGrid .post, #pilihan .post'));
+    const resultCount = document.getElementById('resultCount');
+
+    function updateCount(visible){
+      resultCount.textContent = visible === null ? '' : `${visible} hasil`;
+    }
+
+    function filterPosts(q){
+      const query = q.trim().toLowerCase();
+      let visible = 0;
+      posts.forEach(p => {
+        const title = (p.getAttribute('data-title') || '').toLowerCase();
+        const cat = (p.getAttribute('data-category') || '').toLowerCase();
+        const hit = !query || title.includes(query) || cat.includes(query);
+        p.style.display = hit ? '' : 'none';
+        if (hit) visible++;
+      });
+      updateCount(query ? visible : null);
+    }
+
+    searchInput.addEventListener('input', (e) => filterPosts(e.target.value));
+  </script>
+</body>
+</html>
